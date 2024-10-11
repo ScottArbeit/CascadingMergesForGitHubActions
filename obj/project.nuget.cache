@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "uVHM6cIVqlg=",
+  "success": true,
+  "projectFilePath": "D:\\Source\\CascadingMergesForGitHubActions\\SampleProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\scott\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.0-rc.1.24452.1\\microsoft.aspnetcore.openapi.9.0.0-rc.1.24452.1.nupkg.sha512",
+    "C:\\Users\\scott\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
