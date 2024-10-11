@@ -1,0 +1,41 @@
+name: Propagate Fixes
+
+on:
+  push:
+    branches:
+      - hotfix/*
+      - release/*
+
+jobs:
+  propagate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge into main and develop
+        run: |
+          TARGET_BRANCH="${GITHUB_REF#refs/heads/}"
+          if [[ "$TARGET_BRANCH" == hotfix/* ]]; then
+            git checkout main
+            git merge $TARGET_BRANCH --no-ff -m "Merge $TARGET_BRANCH into main"
+            git push origin main
+
+            git checkout develop
+            git merge $TARGET_BRANCH --no-ff -m "Merge $TARGET_BRANCH into develop"
+            git push origin develop
+          elif [[ "$TARGET_BRANCH" == release/* ]]; then
+            git checkout main
+            git merge $TARGET_BRANCH --no-ff -m "Merge $TARGET_BRANCH into main"
+            git push origin main
+
+            git checkout develop
+            git merge $TARGET_BRANCH --no-ff -m "Merge $TARGET_BRANCH into develop"
+            git push origin develop
+          fi
