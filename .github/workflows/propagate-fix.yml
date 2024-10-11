@@ -1,10 +1,11 @@
 name: Propagate Fixes
 
 on:
-  push:
-    branches:
-      - hotfix/*
-      - release/*
+  workflow_dispatch
+  # push:
+  #   branches:
+  #     - hotfix/*
+  #     - release/*
 
 jobs:
   propagate:
